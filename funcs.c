@@ -26,10 +26,7 @@ void line_proc(FILE *file)
 		for (i = 0; i < length && buffer[len]; i++)
 		{
 			if (!isspace(buffer[i]))
-			{
-				buffer[len++] = buffer[i];
-				continue;
-			}
+				buffer[len++] = buffer[i++];
 			if (i && end && isspace(buffer[i]) && !isspace(buffer[i - 1]))
 			{
 				buffer[len] = '\0';
