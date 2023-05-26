@@ -19,15 +19,12 @@ void line_proc(FILE *file)
 	{
 		if (strspn(buffer, " \t\n") == strlen(buffer))
 			continue;
-		length -= 1;
-		len = 0;
-		end = 0;
+		length -= 1, len = 0, end = 0;
 		for (i = 0; i < length && buffer[len]; i++)
 		{
 			if (!isspace(buffer[i]))
 			{
-				buffer[len] = buffer[i];
-				len++;
+				buffer[len++] = buffer[i];
 				continue;
 			}
 			if (i && end && isspace(buffer[i]) && !isspace(buffer[i - 1]))
@@ -39,8 +36,7 @@ void line_proc(FILE *file)
 				continue;
 			if (i && isspace(buffer[i]) && !isspace(buffer[i - 1]))
 			{
-				buffer[len] = buffer[i];
-				len++;
+				buffer[len++] = buffer[i];
 				end++;
 				continue;
 			}
@@ -89,7 +85,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 			ptr = NULL;
 			break;
 		}
-		if(ptr && !ptr[i])
+		if (ptr && !ptr[i])
 			num = atoi(ptr);
 	}
 	if (!ptr && strcmp(buffer, "pall"))
