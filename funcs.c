@@ -67,7 +67,7 @@ void line_proc(FILE *file)
 void extract(char *buffer, stack_t **head, int linum, FILE *file)
 {
 	char *ptr = NULL;
-	int i = 0;
+	int i = 0, c;
 
 	for (i = 0; buffer[i]; i++)
 	{
@@ -80,7 +80,17 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 	if (ptr && strspn(ptr, " \t\n") == strlen(ptr))
 		ptr = NULL;
 	if (ptr)
-		num = atoi(ptr);
+	{
+		for (i = 0; ptr[i]; i++)
+		{
+			c = ptr[i];
+			if (c > 47 && c < 58)
+				continue;
+			break;
+		}
+		if(!ptr[i])
+			num = atoi(ptr);
+	}
 	if (!ptr && strcmp(buffer, "pall"))
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", linum);
