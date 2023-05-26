@@ -41,4 +41,5 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file);
 void push(stack_t **stack, unsigned int linum);
 void pall(stack_t **stack, unsigned int linum);
 void set_free(stack_t **stack);
+void pint(stack_t **stack, unsigned int linum);
 #endif

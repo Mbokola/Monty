@@ -18,7 +18,10 @@ void line_proc(FILE *file)
 	while ((length = getline(&buffer, &n, file)) != -1)
 	{
 		if (strspn(buffer, " \t\n") == strlen(buffer))
+		{
+			line++;
 			continue;
+		}
 		length -= 1, len = 0, end = 0;
 		for (i = 0; i < length && buffer[len]; i++)
 		{
@@ -46,9 +49,6 @@ void line_proc(FILE *file)
 		extract(buffer, &head, line, file);
 		line++;
 	}
-	free(buffer);
-	fclose(file);
-	set_free(&head);
 }
 
 /**
