@@ -86,9 +86,10 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 			c = ptr[i];
 			if (c > 47 && c < 58)
 				continue;
+			ptr = NULL;
 			break;
 		}
-		if(!ptr[i])
+		if(ptr && !ptr[i])
 			num = atoi(ptr);
 	}
 	if (!ptr && strcmp(buffer, "pall"))
