@@ -11,7 +11,7 @@ void line_proc(FILE *file)
 {
 	char *buffer = NULL;
 	size_t n = 0;
-	ssize_t i = 0, length = 0, len = 0, end = 0;
+	ssize_t length = 0;
 	stack_t *head = NULL;
 	int line = 1;
 
@@ -22,27 +22,7 @@ void line_proc(FILE *file)
 			line++;
 			continue;
 		}
-		length -= 1, len = 0, end = 0;
-		for (i = 0; i < length && buffer[len]; i++)
-		{
-			if (!isspace(buffer[i]))
-				buffer[len++] = buffer[i++];
-			if (i && end && isspace(buffer[i]) && !isspace(buffer[i - 1]))
-			{
-				buffer[len] = '\0';
-				continue;
-			}
-			if (isspace(buffer[i]) && end)
-				continue;
-			if (i && isspace(buffer[i]) && !isspace(buffer[i - 1]))
-			{
-				buffer[len++] = buffer[i];
-				end++;
-				continue;
-			}
-		}
-		if (buffer[len])
-			buffer[len] = '\0';
+		line_proc1(&buffer, length);
 		extract(buffer, &head, line, file);
 		line++;
 	}
@@ -155,4 +135,42 @@ void set_free(stack_t **stack)
 		free(*stack);
 		*stack = ptr;
 	}
+}
+
+/**
+ *line_proc1 - further line processing
+ *@buffer: current line
+ *@length: length of line
+ *
+ *Return: Nothing
+ */
+void line_proc1(char **buffer, ssize_t length)
+{
+	ssize_t i, len = 0, end = 0;
+	char *ptr = *buffer;
+
+	length -= 1;
+		for (i = 0; i < length && ptr[len]; i++)
+		{
+			if (!isspace(ptr[i]))
+			{
+				ptr[len++] = ptr[i];
+				continue;
+			}
+			if (i && end && isspace(ptr[i]) && !isspace(ptr[i - 1]))
+			{
+				ptr[len] = '\0';
+				continue;
+			}
+			if (isspace(ptr[i]) && end)
+				continue;
+			if (i && isspace(ptr[i]) && !isspace(ptr[i - 1]))
+			{
+				ptr[len++] = ptr[i];
+				end++;
+				continue;
+			}
+		}
+		if (ptr[len])
+			ptr[len] = '\0';
 }
