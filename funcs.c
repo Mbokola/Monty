@@ -49,6 +49,9 @@ void line_proc(FILE *file)
 		extract(buffer, &head, line, file);
 		line++;
 	}
+	free(buffer);
+	fclose(file);
+	set_free(&head);
 }
 
 /**
