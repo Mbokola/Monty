@@ -45,13 +45,12 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 	char *ptr = NULL;
 	int i = 0, c;
 
-	for (i = 0; buffer[i]; i++)
+	for (i = 0; buffer[i] && buffer[0] != '#'; i++)
 	{
-		if (isspace(buffer[i]) || buffer[0] == '#')
+		if (isspace(buffer[i]))
 		{
 			buffer[i] = '\0';
-			if (buffer[0] != '#')
-				ptr = &buffer[i + 1];
+			ptr = &buffer[i + 1];
 		}
 	}
 	if (ptr && strspn(ptr, " \t\n") == strlen(ptr))
