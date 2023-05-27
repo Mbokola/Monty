@@ -1,7 +1,4 @@
-push 1
-add
-push 2
+#push
 push 3
-pall
-add
+push 4
 pall

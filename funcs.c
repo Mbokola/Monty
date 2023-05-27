@@ -45,7 +45,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 	char *ptr = NULL;
 	int i = 0, c;
 
-	for (i = 0; buffer[i] && buffer[0] != '#'; i++)
+	for (i = 0; buffer[i]; i++)
 	{
 		if (isspace(buffer[i]))
 		{
@@ -76,7 +76,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-	if (ptr)
+	if (buffer[0] != '#')
 		opcode_exe(head, buffer, linum, file);
 }
 
