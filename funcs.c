@@ -60,7 +60,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 		for (i = 0; ptr[i]; i++)
 		{
 			c = ptr[i];
-			if (c > 47 && c < 58)
+			if ((c > 47 && c < 58) || c == '-')
 				continue;
 			ptr = NULL;
 			break;

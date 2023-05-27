@@ -1,8 +1,6 @@
-pop
-push 11
-push     2
-
-                
-    push       1024                          
-pop
-pall
+push 1
+push 1024
+push -0
+push -1
+push -1024
+push 123a
