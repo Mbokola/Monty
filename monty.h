@@ -34,6 +34,7 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
 extern int num;
 void line_proc(FILE *file);
 void extract(char *buffer, stack_t **head, int linum, FILE *file);
@@ -44,4 +45,12 @@ void set_free(stack_t **stack);
 void pint(stack_t **stack, unsigned int linum);
 void line_proc1(char **buffer, ssize_t length);
 void pop(stack_t **stack, unsigned int linum);
+instruction_t op[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
+	{NULL, NULL}
+};
+
 #endif

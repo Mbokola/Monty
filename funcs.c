@@ -92,13 +92,6 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 {
 	int i, track = 0, poptrack = 0;
 
-	instruction_t op[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{NULL, NULL}
-	};
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(str, op[i].opcode) == 0)
