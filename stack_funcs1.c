@@ -55,7 +55,7 @@ void sub(stack_t **stack, unsigned int linum)
 
         if (!*stack || !(*stack)->next)
         {
-                dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", linum);
+                dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", linum);
                 num = 0;
         }
         else
