@@ -47,4 +47,5 @@ void line_proc1(char **buffer, ssize_t length);
 void pop(stack_t **stack, unsigned int linum);
 void swap(stack_t **stack, unsigned int linum);
 void add(stack_t **stack, unsigned int linum);
+void nop(stack_t **stack, unsigned int linum);
 #endif

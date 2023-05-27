@@ -26,3 +26,18 @@ void add(stack_t **stack, unsigned int linum)
 
         }
 }
+
+#include "monty.h"
+/**
+ *nop - does nothing
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void nop(stack_t **stack, unsigned int linum)
+{
+	(void)stack;
+	(void)linum;
+	num = 1;
+}
