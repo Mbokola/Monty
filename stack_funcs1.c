@@ -71,7 +71,7 @@ void sub(stack_t **stack, unsigned int linum)
 
 /**
  *div - divides second element by first element
- *Description: Result is store in second node and first node is removed
+ *Description: Result is stored in second node and first node is removed
  *@stack: The stack
  *@linum: Line number
  *
@@ -94,6 +94,34 @@ void divi(stack_t **stack, unsigned int linum)
         else
         {
 		ptr->next->n /= ptr->n;
+		*stack = ptr->next;
+		free(ptr);
+		ptr = NULL;
+		num = 1;
+
+        }
+}
+
+/**
+ *mul - multiplies firt 2 elements of stack
+ *Description: Result is stored in second node and first node is removed
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void mul(stack_t **stack, unsigned int linum)
+{
+        stack_t *ptr = *stack;
+
+        if (!*stack || !(*stack)->next)
+        {
+                dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n", linum);
+                num = 0;
+        }
+        else
+        {
+		ptr->next->n *= ptr->n;
 		*stack = ptr->next;
 		free(ptr);
 		ptr = NULL;
