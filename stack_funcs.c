@@ -46,3 +46,18 @@ void pall(stack_t **stack, unsigned int linum)
 	}
 
 }
+
+/**
+ *pint - prints element at top of stack
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void pint(stack_t **stack, unsigned int linum)
+{
+	if(!*stack)
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", linum);
+	else
+		printf("%d\n", (*stack)->n);
+}
