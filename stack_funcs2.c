@@ -24,7 +24,7 @@ void mod(stack_t **stack, unsigned int linum)
         }
         else
         {
-                ptr->next->n /= ptr->n;
+                ptr->next->n %= ptr->n;
                 *stack = ptr->next;
                 free(ptr);
                 ptr = NULL;
