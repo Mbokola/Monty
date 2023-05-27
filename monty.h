@@ -50,4 +50,5 @@ void add(stack_t **stack, unsigned int linum);
 void nop(stack_t **stack, unsigned int linum);
 void sub(stack_t **stack, unsigned int linum);
 void divi(stack_t **stack, unsigned int linum);
+void mul(stack_t **stack, unsigned int linum);
 #endif
