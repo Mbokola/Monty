@@ -90,7 +90,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
  */
 void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 {
-	int i, track = 0;
+	int i, track = 0, poptrack = 0;
 
 	instruction_t op[] = {
 		{"push", push},
@@ -103,12 +103,16 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 	{
 		if (strcmp(str, op[i].opcode) == 0)
 		{
+			if (*stack)
+				poptrack = 2;
 			op[i].f(&*stack, linum);
 			if (i != 1)
 				track = 1;
 			break;
 		}
 	}
+	if (!*stack && i == 3 && poptrack == 2)
+		track = 0;
 	if (op[i].opcode == NULL || (track && !*stack))
 	{
 		if (!*stack && i == 3)
