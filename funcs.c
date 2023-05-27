@@ -110,7 +110,7 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 			break;
 		}
 	}
-	if (op[i].opcode == NULL || (track && !*stack))
+	if (op[i].opcode == NULL || track)
 	{
 
 		if (!track)
