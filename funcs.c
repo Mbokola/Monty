@@ -70,7 +70,6 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 	}
 	if (!ptr && !strcmp(buffer, "push"))
 	{
-		printf("Line %d is %s\n", linum, buffer);
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", linum);
 		free(buffer);
 		set_free(head);
@@ -97,6 +96,7 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	for (i = 0; op[i].opcode != NULL; i++)

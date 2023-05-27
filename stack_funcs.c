@@ -61,3 +61,24 @@ void pint(stack_t **stack, unsigned int linum)
 	else
 		printf("%d\n", (*stack)->n);
 }
+/**
+ *pop - deletes element at top of stack
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void pop(stack_t **stack, unsigned int linum)
+{
+	stack_t *popper = *stack;
+
+        if(!*stack)
+                dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
+        else
+	{
+		*stack = popper->next;
+		free(popper);
+		popper = NULL;
+	}
+
+}
