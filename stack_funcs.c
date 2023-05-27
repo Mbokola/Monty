@@ -77,6 +77,7 @@ void pop(stack_t **stack, unsigned int linum)
         else
 	{
 		*stack = popper->next;
+		(*stack)->prev = NULL;
 		free(popper);
 		popper = NULL;
 	}
