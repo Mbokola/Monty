@@ -102,6 +102,7 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", divi},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 	for (i = 0; op[i].opcode != NULL; i++)
