@@ -81,7 +81,8 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-	opcode_exe(head, buffer, linum, file);
+	if (ptr)
+		opcode_exe(head, buffer, linum, file);
 }
 
 /**
