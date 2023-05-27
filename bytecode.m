@@ -1,7 +1,9 @@
 push 1
-swap
-push 2
-push 3
+push 1024
 pall
-swap
+push -0
 pall
+push -1
+push -1024
+pall
+push 123a

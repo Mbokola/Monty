@@ -24,6 +24,8 @@ void push(stack_t **stack, unsigned int linum)
 		new_node->next = *stack;
 		*stack = new_node;
 	}
+	if (!num)
+		num = 1;
 
 }
 
@@ -37,6 +39,8 @@ void push(stack_t **stack, unsigned int linum)
 void pall(stack_t **stack, unsigned int linum)
 {
 	stack_t *ptr = *stack;
+
+	puts("why am i here\n");
 
 	(void)linum;
 	while (ptr)

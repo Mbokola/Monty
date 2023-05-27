@@ -112,7 +112,6 @@ void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 	}
 	if (op[i].opcode == NULL || track)
 	{
-
 		if (!track)
 			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", linum, str);
 		free(str);
