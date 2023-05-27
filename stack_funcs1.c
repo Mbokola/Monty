@@ -9,22 +9,22 @@
  */
 void add(stack_t **stack, unsigned int linum)
 {
-        stack_t *ptr = *stack;
+	stack_t *ptr = *stack;
 
-        if (!*stack || !(*stack)->next)
-        {
-                dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", linum);
-                num = 0;
-        }
-        else
-        {
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", linum);
+		num = 0;
+	}
+	else
+	{
 		ptr->next->n += ptr->n;
 		*stack = ptr->next;
 		free(ptr);
 		ptr = NULL;
 		num = 1;
 
-        }
+	}
 }
 
 /**
@@ -51,26 +51,26 @@ void nop(stack_t **stack, unsigned int linum)
  */
 void sub(stack_t **stack, unsigned int linum)
 {
-        stack_t *ptr = *stack;
+	stack_t *ptr = *stack;
 
-        if (!*stack || !(*stack)->next)
-        {
-                dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", linum);
-                num = 0;
-        }
-        else
-        {
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", linum);
+		num = 0;
+	}
+	else
+	{
 		ptr->next->n -= ptr->n;
 		*stack = ptr->next;
 		free(ptr);
 		ptr = NULL;
 		num = 1;
 
-        }
+	}
 }
 
 /**
- *div - divides second element by first element
+ *divi - divides second element by first element
  *Description: Result is stored in second node and first node is removed
  *@stack: The stack
  *@linum: Line number
@@ -79,27 +79,27 @@ void sub(stack_t **stack, unsigned int linum)
  */
 void divi(stack_t **stack, unsigned int linum)
 {
-        stack_t *ptr = *stack;
+	stack_t *ptr = *stack;
 
-        if (!*stack || !(*stack)->next)
-        {
-                dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", linum);
-                num = 0;
-        }
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", linum);
+		num = 0;
+	}
 	else if (!ptr->n)
 	{
 		dprintf(STDERR_FILENO, "L%d: division by zero\n", linum);
 		num = 0;
 	}
-        else
-        {
+	else
+	{
 		ptr->next->n /= ptr->n;
 		*stack = ptr->next;
 		free(ptr);
 		ptr = NULL;
 		num = 1;
 
-        }
+	}
 }
 
 /**
@@ -112,20 +112,20 @@ void divi(stack_t **stack, unsigned int linum)
  */
 void mul(stack_t **stack, unsigned int linum)
 {
-        stack_t *ptr = *stack;
+	stack_t *ptr = *stack;
 
-        if (!*stack || !(*stack)->next)
-        {
-                dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n", linum);
-                num = 0;
-        }
-        else
-        {
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't mul, stack too short\n", linum);
+		num = 0;
+	}
+	else
+	{
 		ptr->next->n *= ptr->n;
 		*stack = ptr->next;
 		free(ptr);
 		ptr = NULL;
 		num = 1;
 
-        }
+	}
 }
