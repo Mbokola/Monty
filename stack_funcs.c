@@ -56,7 +56,7 @@ void pall(stack_t **stack, unsigned int linum)
  */
 void pint(stack_t **stack, unsigned int linum)
 {
-	if(!*stack)
+	if (!*stack)
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", linum);
 	else
 		printf("%d\n", (*stack)->n);
@@ -72,9 +72,9 @@ void pop(stack_t **stack, unsigned int linum)
 {
 	stack_t *popper = *stack;
 
-        if(!*stack)
-                dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
-        else
+	if (!*stack)
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
+	else
 	{
 		*stack = popper->next;
 		(*stack)->prev = NULL;
