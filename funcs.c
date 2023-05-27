@@ -173,6 +173,4 @@ void line_proc1(char **buffer, ssize_t length)
 				continue;
 			}
 		}
-		if (ptr[len])
-			ptr[len] = '\0';
 }
