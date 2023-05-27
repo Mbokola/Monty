@@ -72,9 +72,8 @@ void pop(stack_t **stack, unsigned int linum)
 {
 	stack_t *popper = *stack;
 
-	if (!*stack)
-		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
-	else
+	(void)linum;
+	if (*stack)
 	{
 		*stack = popper->next;
 		if (*stack)
