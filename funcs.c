@@ -90,33 +90,29 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
  */
 void opcode_exe(stack_t **stack, char *str, int linum, FILE *file)
 {
-	int i, track = 0, poptrack = 0;
+	int i, track = 0;
 
 	instruction_t op[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 	for (i = 0; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(str, op[i].opcode) == 0)
 		{
-			if (*stack)
-				poptrack = 2;
 			op[i].f(&*stack, linum);
-			if (i != 1)
+			if (i != 1 && !num)
 				track = 1;
 			break;
 		}
 	}
-	if (!*stack && i == 3 && poptrack == 2)
-		track = 0;
 	if (op[i].opcode == NULL || (track && !*stack))
 	{
-		if (!*stack && i == 3)
-			dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
+
 		if (!track)
 			dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", linum, str);
 		free(str);

@@ -1,7 +1,5 @@
-push 2
 push 1
-pint
+push 2
 pop
-pint
 pop
 pop

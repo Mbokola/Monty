@@ -57,9 +57,15 @@ void pall(stack_t **stack, unsigned int linum)
 void pint(stack_t **stack, unsigned int linum)
 {
 	if (!*stack)
+	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", linum);
+		num = 0;
+	}
 	else
+	{
 		printf("%d\n", (*stack)->n);
+		num = 1;
+	}
 }
 /**
  *pop - deletes element at top of stack
@@ -80,6 +86,39 @@ void pop(stack_t **stack, unsigned int linum)
 			(*stack)->prev = NULL;
 		free(popper);
 		popper = NULL;
+		num = 1;
+	}
+	else
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", linum);
+		num = 0;
 	}
 
+}
+
+/**
+ *swap - swaps firt 2 elements of stack
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void swap(stack_t **stack, unsigned int linum)
+{
+	stack_t *swap = *stack;
+
+	if (!*stack || !(*stack)->next)
+	{
+		dprintf(STDERR_FILENO ,"L%d: can't swap, stack too short\n", linum);
+		num = 0;
+	}
+	else
+	{
+		*stack = (*stack)->next;
+		swap->prev = *stack;
+		swap->next = (*stack)->next;
+		(*stack)->next = swap;
+		(*stack)->prev = NULL;
+		num = 1;
+	}
 }
