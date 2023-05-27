@@ -47,7 +47,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 
 	for (i = 0; buffer[i]; i++)
 	{
-		if (buffer[i] == ' ')
+		if (isspace(buffer[i]))
 		{
 			buffer[i] = '\0';
 			ptr = &buffer[i + 1];
@@ -173,4 +173,6 @@ void line_proc1(char **buffer, ssize_t length)
 				continue;
 			}
 		}
+		if (ptr[len])
+			ptr[len] = '\0';
 }
