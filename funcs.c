@@ -52,7 +52,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 			buffer[i] = '\0';
 			ptr = &buffer[i + 1];
 		}
-		if (buffer[i] == '#')
+		if (buffer[0] == '#')
 		{
 			ptr = NULL;
 			break;
@@ -81,8 +81,7 @@ void extract(char *buffer, stack_t **head, int linum, FILE *file)
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}
-	if (ptr)
-		opcode_exe(head, buffer, linum, file);
+	opcode_exe(head, buffer, linum, file);
 }
 
 /**
