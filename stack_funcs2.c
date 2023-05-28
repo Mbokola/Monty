@@ -61,3 +61,35 @@ void pchar(stack_t **stack, unsigned int linum)
 		num = 0;
 	}
 }
+
+/**
+ *pstr - prints the ascii char of elements
+ *Description - stops printing if element equals 0, value not an ascii, end of
+ *stack
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void pstr(stack_t **stack, unsigned int linum)
+{
+	stack_t *ptr = *stack;
+
+	(void)linum;
+	if (!*stack)
+		puts("\n");
+	else
+	{
+		while (ptr)
+		{
+			if (ptr->n > 0 && ptr->n < 128)
+				putchar(ptr->n);
+			else
+				break;
+			ptr = ptr->next;
+		}
+		puts("\n");
+	}
+
+	num = 1;
+}
