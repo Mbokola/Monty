@@ -32,3 +32,32 @@ void mod(stack_t **stack, unsigned int linum)
 
 	}
 }
+
+/**
+ *pchar - prints the ascii char of first element
+ *
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void pchar(stack_t **stack, unsigned int linum)
+{
+	stack_t *ptr = *stack;
+
+	if (!*stack)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", linum);
+		num = 0;
+	}
+	else if (ptr->n >= 0 && ptr->n < 128)
+	{
+		printf("%c\n", ptr->n);
+		num = 1;
+	}
+	else
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n", linum);
+		num = 0;
+	}
+}

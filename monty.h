@@ -52,4 +52,5 @@ void sub(stack_t **stack, unsigned int linum);
 void divi(stack_t **stack, unsigned int linum);
 void mul(stack_t **stack, unsigned int linum);
 void mod(stack_t **stack, unsigned int linum);
+void pchar(stack_t **stack, unsigned int linum);
 #endif
