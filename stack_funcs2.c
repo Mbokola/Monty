@@ -93,3 +93,31 @@ void pstr(stack_t **stack, unsigned int linum)
 
 	num = 1;
 }
+
+/**
+ *rotl - first element becomes last
+ *Description - Second element becomes top
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void rotl(stack_t **stack, unsigned int linum)
+{
+	stack_t *ptr = *stack, *tmp = ptr;
+
+	(void)linum;
+	if (!ptr || !ptr->next)
+		num = 1;
+	else
+	{
+		*stack = ptr->next;
+		(*stack)->prev = NULL;
+		while (ptr->next)
+			ptr = ptr->next;
+		tmp->prev = ptr;
+		tmp->next = NULL;
+		ptr->next = tmp;
+		num = 1;
+	}
+}
