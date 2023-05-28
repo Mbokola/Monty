@@ -55,4 +55,5 @@ void mod(stack_t **stack, unsigned int linum);
 void pchar(stack_t **stack, unsigned int linum);
 void pstr(stack_t **stack, unsigned int linum);
 void rotl(stack_t **stack, unsigned int linum);
+void rotr(stack_t **stack, unsigned int linum);
 #endif

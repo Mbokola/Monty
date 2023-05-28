@@ -121,3 +121,28 @@ void rotl(stack_t **stack, unsigned int linum)
 		num = 1;
 	}
 }
+
+/**
+ *rotr - last element becomes first
+ *@stack: The stack
+ *@linum: Line number
+ *
+ *Return: Nothing
+ */
+void rotr(stack_t **stack, unsigned int linum)
+{
+	stack_t *ptr = *stack;
+
+	(void)linum;
+	if (!ptr || !ptr->next)
+		num = 1;
+	else
+	{
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->prev->next = NULL;
+		ptr->prev = NULL;
+		ptr->next = *stack;
+		*stack = ptr;
+	}
+}
