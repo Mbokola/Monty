@@ -77,7 +77,7 @@ void pstr(stack_t **stack, unsigned int linum)
 
 	(void)linum;
 	if (!*stack)
-		puts("\n");
+		printf("\n");
 	else
 	{
 		while (ptr)
@@ -88,7 +88,7 @@ void pstr(stack_t **stack, unsigned int linum)
 				break;
 			ptr = ptr->next;
 		}
-		puts("\n");
+		printf("\n");
 	}
 
 	num = 1;
